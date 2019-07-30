@@ -108,7 +108,7 @@ enjoy2018 <- enjoy2018 %>%
                                           "Definitely\nagree")))
 ```
 
-```{r enjoy2018-fig, fig.height = 2, fig.cap="Expectations of Stage 1 Biologists about Data Analysis in 2018: Responses to the question '**I will enjoy data analysis.**' given as the first slide of contact time slot.", , fig.pos = 'h'}
+```{r enjoy2018-fig, fig.height = 2, fig.cap="Expectations of Stage 1 Biologists about Data Analysis in 2018: Responses to the question '**I will enjoy data analysis.**' given as the first slide of contact time slot.", fig.pos = 'h'}
 lik <- likert(enjoy2018)
 plot(lik,
      legend.position = "top",
@@ -214,7 +214,7 @@ plotb <- plot(lik,
               high.col = "yellow")
 ```
 
-```{r comp-fig, fig.cap="Expectations of Stage 1 Biologists about of Data Analysis in 2019. Responses to the question '**I will enjoy data analysis**' follow the same pattern as in 2018 (upper panel). However, when asked '**How do you feel about R?**' anxiety was significantly reduced following the introduction of an independent study activity prior to any contact time (lower panel).", , fig.pos = 'h'}
+```{r comp-fig, fig.cap="Expectations of Stage 1 Biologists about of Data Analysis in 2019. Responses to the question '**I will enjoy data analysis**' follow the same pattern as in 2018 (upper panel). However, when asked '**How do you feel about R?**' anxiety was significantly reduced following the introduction of an independent study activity prior to any contact time (lower panel).", fig.pos = 'h'}
 
 grid.arrange(plota, plotb)
 

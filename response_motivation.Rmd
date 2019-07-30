@@ -1,0 +1,100 @@
+---
+title: "Audience response: motivation"
+author: "Emma Rand"
+output:
+  html_document: bookdown::html_document2
+  pdf_document: bookdown::pdf_document2
+  word_document: default
+bibliography: references.bib
+figsintext: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE,
+                      warning = FALSE,
+                      message = FALSE,
+                      fig.show = "asis")
+```
+
+```{r pkg}
+# pkg
+library(tidyverse)
+library(likert)
+library(psych)
+library(gridExtra)
+library(kableExtra)
+library(jpeg)
+library(png)
+library(grid)
+```
+
+
+
+The importance placed on data handling and analysis in a biology degree can therefore come as surprise and not a welcome one! These subjects are recognised as among the more difficult to teach [e.g., @Du_Boulay1986], require more and harder work from the student and may be relatively unpopular [e.g., @Uttl2017-tk]. 
+At the start of the first lecture of Data Analysis in R, I ask students to indicate the extent to which they agree with the statement "I will enjoy data analysis" and "How do you feel about R?"
+ 
+
+
+
+```{r create}
+r_feel <- data.frame(q1 = rep(c("Excited",
+                                                          "Seems ok",
+                                                          "Undecided",
+                                                          "A bit\nworried",
+                                                          "Terrified"), 
+                                                        times = c(4, 19, 10, 34, 33)))
+
+enjoy <- data.frame(q1 = rep(c("Definitely\nagree",
+                                                       "Probably\nagree",
+                                                       "Neutral",
+                                                       "Probably\ndisagree",
+                                                       "Definitely\ndisagree"), 
+                                                     times = c(2, 9, 13, 43, 12)))
+enjoy <- enjoy %>% 
+  mutate("I will enjoy data analysis" = factor(q1, 
+                                               levels = c("Definitely\ndisagree",
+                                                          "Probably\ndisagree",
+                                                          "Neutral",
+                                                          "Probably\nagree",
+                                                          "Definitely\nagree")))
+r_feel <- r_feel %>% 
+  mutate("How do you feel about R?" = factor(q1, 
+                                             levels = c("Terrified",
+                                                        "A bit\nworried",
+                                                        "Undecided",
+                                                        "Seems ok",
+                                                        "Excited")))
+
+```
+
+```{r enjoy-figure}
+lik <- likert(enjoy[2])
+plota <- plot(lik,
+              legend.position = "top",
+              legend = "",
+              text.size = 4,
+              low.color = "lightblue",
+              high.col = "lightgreen")
+```
+
+```{r feel-figure}
+lik <- likert(r_feel[2])
+plotb <- plot(lik,
+              legend.position = "top",
+              legend = "",
+              text.size = 4,
+              low.color = "lightblue",
+              high.col = "lightgreen")
+```
+
+
+
+```{r comp-fig, fig.cap="Expectations of Stage 1 Biologists about of Data Analysis in 2018. Responses to the question '**I will enjoy data analysis**' (upper figure) and '**How do you feel about R?**' (lower figure).", fig.pos = 'h'}
+
+grid.arrange(plota, plotb)
+
+
+```
+
+
+
