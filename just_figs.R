@@ -19,3 +19,12 @@ plot(lik,
      legend = "",
      text.size = 4,
      low.color = "lightblue")
+
+
+lik <- likert(r_feel)
+plotb <- plot(lik,
+              legend.position = "top",
+              legend = "",
+              text.size = 4,
+              low.color = "lightpink",
+              high.col = "yellow")
